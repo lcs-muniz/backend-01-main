@@ -3,12 +3,14 @@ import path from 'path';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import apiRoutes from './routes/routes';
+import { conectarBanco } from './instances/mysql';
 
 dotenv.config();
 
 const server = express();
 
 server.use(cors());
+conectarBanco();
 
 server.use(express.static(path.join(__dirname, '../public')));
 

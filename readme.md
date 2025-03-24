@@ -7,8 +7,7 @@ npm run start-dev
 
 # Dependencias
 
-O Dotenv serve para criar um arquivo de ambiente no repositório, onde é configurado a definição do usuário para a conexão apenas mudando o que a variável irá receber
-em um arquivo separado.
+O Dotenv serve para criar um arquivo de váriaveis de ambiente no repositório, onde é configurado a definição do usuário para a conexão apenas mudando o que a variável irá receber em um arquivo separado.
 
 O Cors é uma api para definir uma segurança de quais os websites terão acesso aos resources do servidor.
 
