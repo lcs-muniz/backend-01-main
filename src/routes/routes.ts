@@ -4,11 +4,17 @@ import * as AlunoController from '../controllers/AlunoController';
 import * as DisciplinaController from '../controllers/DisciplinaController';
 import * as AlunoDisciplinaController from '../controllers/AlunoDisciplinaController';
 
-import * as ParticipanteController from '../controllers/ParticipanteController'
-import * as EventoController from '../controllers/EventoController'
-import * as ParticipanteEventoController from '../controllers/ParticipanteEventoController'
+import * as ParticipanteController from '../controllers/ParticipanteController';
+import * as EventoController from '../controllers/EventoController';
+import * as ParticipanteEventoController from '../controllers/ParticipanteEventoController';
+
+import * as ApiController from '../controllers/ApiController';
 
 const router = Router();
+
+// Testes
+router.get("/saudacao", ApiController.apiSaudacao);
+
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
