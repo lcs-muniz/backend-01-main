@@ -13,7 +13,8 @@ import * as ApiController from '../controllers/ApiController';
 const router = Router();
 
 // Testes
-router.get("/saudacao", ApiController.apiSaudacao);
+router.get("/api/listarTodosAlunos", ApiController.apiLista);
+router.get("/api/cadastrarAluno", ApiController.apiCadastro);
 
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);

@@ -10,12 +10,12 @@ export const ping = (req: Request, res: Response) => {
     }
 };
 
-export const apiSaudacao = (req: Request, res: Response) => {
-    return res.json({ mensagem: "Olá, Bem vindo à API!"});
+export const apiLista = (req: Request, res: Response) => {
+    return res.json({mensagem: "Api Teste da lista de alunos"});
 };
 
-export const apiLista = (req: Request, res: Response) => {
-    return res.json();
+export const apiCadastro = (req: Request, res: Response) => {
+    return res.json ({mensagem: "Api Teste de cadastro."});
 };
 
 
