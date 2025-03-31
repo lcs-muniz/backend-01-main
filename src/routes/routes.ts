@@ -9,6 +9,7 @@ import * as EventoController from '../controllers/EventoController';
 import * as ParticipanteEventoController from '../controllers/ParticipanteEventoController';
 
 import * as ApiController from '../controllers/ApiController';
+import { Aluno } from '../models/Aluno';
 
 const router = Router();
 
@@ -19,9 +20,13 @@ router.get("/api/cadastrarAluno", ApiController.apiCadastro);
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
+router.put('/atualizarAluno/:alunoId', AlunoController.atualizarAluno);
+router.delete('/deletarAluno/:alunoId', AlunoController.deletarAluno);
 
 router.get('/listarTodasDisciplinas', DisciplinaController.listarDisciplinas);
 router.post('/cadastrarDisciplina', DisciplinaController.cadastrarDisciplina);
+router.put('/atualizarDisciplina/:disciplinaId', DisciplinaController.atualizarDisciplina);
+router.delete('/deletarDisciplina/:disciplinaId', DisciplinaController.deletarDisciplina);
 
 router.get("/listarDisciplinasDoAluno/:alunoId", AlunoDisciplinaController.listarDisciplinasDoAluno);
 router.post("/vincularAlunoADisciplina", AlunoDisciplinaController.vincularAlunoDisciplina);
