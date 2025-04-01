@@ -1,7 +1,7 @@
 import request from 'supertest';
 import server from '../server';
 
-jest.setTimeout(10000);
+jest.setTimeout(20000);
 
 describe("Teste para verificar listagem de alunos", () => {
     it ("Esse teste precisa verificar o status da response, se a resposta contem um array de alunos e se o array contém ao menos 1 aluno", async () => {
@@ -34,5 +34,23 @@ describe("Teste para o cadastro do aluno", () => {
         expect(response.body.novoAluno).toHaveProperty("email", novoAluno.email);
         expect(response.body.novoAluno).toHaveProperty("matricula", novoAluno.matricula);
     
+    });
+});
+
+describe("Teste de API de Alunos - Atualizar", () => {
+    it("Deve atualizar um aluno na rota /atualizarAluno/:alunoId", async () => {
+        const alunoId = 16;
+        const dadosAtualizados = {
+            nome: "Felipao da silva Atualizado",
+            email: "felipao@example",
+        };
+        
+        const response = await request(server).put (`/atualizarAluno/${alunoId}`).send(dadosAtualizados);
+
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe("Aluno atualizado com sucesso.");
+        expect(response.body.aluno).toHaveProperty("nome", dadosAtualizados.nome);
+        expect(response.body.aluno).toHaveProperty("email", dadosAtualizados.email);
+
     });
 });

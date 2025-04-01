@@ -16,6 +16,7 @@ const router = Router();
 // Testes
 router.get("/api/listarTodosAlunos", ApiController.apiLista);
 router.get("/api/cadastrarAluno", ApiController.apiCadastro);
+router.get("/api/atualizarAluno", ApiController.apiAtualizar);
 
 
 router.get('/listarTodosAlunos', AlunoController.listarAlunos);

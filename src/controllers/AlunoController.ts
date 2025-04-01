@@ -18,7 +18,7 @@ export const cadastrarAluno = async(req: Request, res: Response) : Promise<Respo
     });
 };
 
-export const atualizarAluno = async(req: Request, res: Response) : Promise<Response> =>{
+export const atualizarAluno = async(req: Request, res: Response) =>{
     try {
         const { alunoId } = req.params;
         const { dadosAtualizados } = req.body;
@@ -26,14 +26,14 @@ export const atualizarAluno = async(req: Request, res: Response) : Promise<Respo
         const aluno = await Aluno.findByPk(alunoId);
         
         if(!aluno){
-            return res.status(400).json("Aluno não encontrado!");
+            return res.status(404).json("Aluno não encontrado!");
         }
-        await aluno?.update(dadosAtualizados, {fields: Object.keys(dadosAtualizados)});
+        await aluno.update(dadosAtualizados, {fields: Object.keys(dadosAtualizados)});
 
         return res.status(200).json({message: "Aluno Atualizado com sucesso.", aluno});
     
     } catch (error) {
-        return res.status(400).json({message: "Erro do sistema"})        
+        return res.status(500).json({message: "Erro do sistema"})        
     }
 };
 

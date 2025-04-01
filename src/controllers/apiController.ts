@@ -18,5 +18,6 @@ export const apiCadastro = (req: Request, res: Response) => {
     return res.json ({mensagem: "Api Teste de cadastro."});
 };
 
-
-
+export const apiAtualizar = (req: Request, res: Response) => {
+    return res.json({mensagem: "Api Teste de atualizar"});
+}
