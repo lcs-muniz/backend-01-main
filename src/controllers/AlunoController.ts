@@ -54,7 +54,7 @@ export const deletarAluno = async(req: Request, res: Response) : Promise<Respons
     return res.json("Aluno deletado com sucesso.");
 };
 
-export const buscarPorId = async(req:Request, res: Response) : Promise<Response> =>{
+export const buscarAlunoPorId = async(req:Request, res: Response) : Promise<Response> =>{
     const { alunoId } = req.params;
     let aluno = await Aluno.findByPk(alunoId);
     
