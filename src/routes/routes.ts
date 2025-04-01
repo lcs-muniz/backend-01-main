@@ -22,6 +22,7 @@ router.get('/listarTodosAlunos', AlunoController.listarAlunos);
 router.post('/cadastrarAluno', AlunoController.cadastrarAluno);
 router.put('/atualizarAluno/:alunoId', AlunoController.atualizarAluno);
 router.delete('/deletarAluno/:alunoId', AlunoController.deletarAluno);
+router.get('/buscarPeloId/:alunoId', AlunoController.buscarPorId);
 
 router.get('/listarTodasDisciplinas', DisciplinaController.listarDisciplinas);
 router.post('/cadastrarDisciplina', DisciplinaController.cadastrarDisciplina);
