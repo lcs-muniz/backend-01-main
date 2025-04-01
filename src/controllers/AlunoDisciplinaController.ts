@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Aluno } from "../models/Aluno";
 import { Disciplina } from "../models/Disciplina";
 
-export const listarDisciplinasDoAluno = async (req: Request, res: Response) => {
+export const listarDisciplinasDoAluno = async (req: Request, res: Response) : Promise <Response> => {
     const { alunoId } = req.params;
 
     const aluno = await Aluno.findByPk(alunoId, {
@@ -16,7 +16,7 @@ export const listarDisciplinasDoAluno = async (req: Request, res: Response) => {
     return res.status(404).json("Aluno não encontrado.");
 };
 
-export const vincularAlunoDisciplina = async (req: Request, res: Response) => {
+export const vincularAlunoDisciplina = async (req: Request, res: Response) : Promise <Response> => {
     const { alunoId, disciplinaId } = req.body;
 
     const aluno = await Aluno.findByPk(alunoId);
