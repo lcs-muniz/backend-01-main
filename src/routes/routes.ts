@@ -36,9 +36,15 @@ router.post("/vincularAlunoADisciplina", AlunoDisciplinaController.vincularAluno
 
 router.get('/listarTodosParticipantes', ParticipanteController.listarParticipantes);
 router.post('/cadastrarParticipante', ParticipanteController.cadastrarParticipantes);
+router.put('/atualizarParticipante/:participanteId', ParticipanteController.atualizarParticipante);
+router.delete('/deletarParticipante/:participanteId', ParticipanteController.deletarParticipante);
+router.get('/buscarParticipantePorId/:participanteId', ParticipanteController.buscarParticipantePorId);
 
 router.get('/listarTodosEventos', EventoController.listarEventos);
 router.post('/cadastrarEvento', EventoController.cadastrarEventos);
+router.put('/atualizarEvento/:eventoId', EventoController.atualizarEvento);
+router.delete('/deletarEvento/:eventoId', EventoController.deletarEvento);
+router.get('/buscarEventoPorId/:eventoId', EventoController.buscarEventoPorId);
 
 router.get("/listarEventosDoParticipante/:participanteId", ParticipanteEventoController.listarEventosDoParticipante);
 router.post("/vincularParticipanteAEvento", ParticipanteEventoController.vincularParticipanteAEvento);
