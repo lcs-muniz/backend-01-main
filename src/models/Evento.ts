@@ -23,6 +23,7 @@ Evento.init(
     {
         sequelize,
         tableName: "eventos",
-        timestamps: false, 
+        timestamps: true, 
+        paranoid:true,
     }
 )

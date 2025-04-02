@@ -31,12 +31,12 @@ export const cadastrarDisciplina = async (req: Request, res: Response) : Promise
 export const atualizarDisciplina = async(req: Request, res: Response) : Promise<Response> =>{
     try {
         const { disciplinaId } = req.params;
-        const { dadosAtualizados } = req.body;
+        const  dadosAtualizados  = req.body;
     
         const disciplina = await Disciplina.findByPk(disciplinaId);
         
         if(!disciplinaId){
-            return res.status(400).json("Disciplina não encontrado!");
+            return res.status(400).json({error:"Disciplina não encontrado!"});
         }
         await disciplina?.update(dadosAtualizados, {fields: Object.keys(dadosAtualizados)});
 
@@ -69,7 +69,7 @@ export const buscarDisciplinaPorId = async(req:Request, res: Response) : Promise
     let disciplina = await Disciplina.findByPk(disciplinaId);
     
     if (!disciplina){
-        return res.status(404).json("Disciplina não encontrada.");
+        return res.status(404).json({error:"Disciplina não encontrada."});
     }
 
     await disciplina.get(disciplinaId);

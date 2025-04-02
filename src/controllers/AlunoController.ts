@@ -26,7 +26,7 @@ export const atualizarAluno = async(req: Request, res: Response) : Promise<Respo
         const aluno = await Aluno.findByPk(alunoId);
         
         if(!aluno){
-            return res.status(404).json("Aluno não encontrado!");
+            return res.status(404).json({error: "Aluno não encontrado!"});
         }
         await aluno?.update(dadosAtualizados, {fields: Object.keys(dadosAtualizados)});
 
@@ -42,7 +42,7 @@ export const deletarAluno = async(req: Request, res: Response) : Promise<Respons
     let aluno = await Aluno.findByPk(alunoId);        
 
     if(!aluno){
-        return res.status(404).json("Aluno não encontrado.");
+        return res.status(404).json({error: "Aluno não encontrado."});
     }
 
     const vinculoDisciplina = await AlunoDisciplina.findOne({ where: { alunoId: aluno.id } });
@@ -51,7 +51,7 @@ export const deletarAluno = async(req: Request, res: Response) : Promise<Respons
     }
 
     await aluno.destroy();
-    return res.json("Aluno deletado com sucesso.");
+    return res.json({message: "Aluno deletado com sucesso."});
 };
 
 export const buscarAlunoPorId = async(req:Request, res: Response) : Promise<Response> =>{
@@ -59,7 +59,7 @@ export const buscarAlunoPorId = async(req:Request, res: Response) : Promise<Resp
     let aluno = await Aluno.findByPk(alunoId);
     
     if (!aluno){
-        return res.status(404).json("Aluno não encontrado.");
+        return res.status(404).json({error: "Aluno não encontrado."});
     }
 
     await aluno.get(alunoId);

@@ -28,6 +28,7 @@ Participante.init(
     {
         sequelize,
         tableName: "participantes",
-        timestamps: false,
+        timestamps: true, 
+        paranoid:true,
     }
 );

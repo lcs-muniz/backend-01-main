@@ -17,10 +17,10 @@ export const listarEventosDoParticipante = async (req: Request, res: Response) =
 };
 
 export const vincularParticipanteAEvento = async (req: Request, res: Response) => {
-    const { participanteId, eventosId } = req.body;
+    const { participanteId, eventoId } = req.body;
 
     const participante = await Participante.findByPk(participanteId);
-    const evento = await Evento.findByPk(eventosId);
+    const evento = await Evento.findByPk(eventoId);
 
     if (!participante || !evento){
         return res.status(404).json({ error: "Participante ou Evento não encontrado."});
