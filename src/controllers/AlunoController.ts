@@ -64,4 +64,4 @@ export const buscarAlunoPorId = async(req:Request, res: Response) : Promise<Resp
 
     await aluno.get(alunoId);
     return res.status(200).json({message: "Aluno Encontrado:", aluno});
-}
+};
