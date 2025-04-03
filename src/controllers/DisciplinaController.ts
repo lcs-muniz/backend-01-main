@@ -52,7 +52,7 @@ export const deletarDisciplina = async(req: Request, res: Response) : Promise<Re
     let disciplina = await Disciplina.findByPk(disciplinaId);        
 
     if(!disciplina){
-       return res.status(404).json({erro:"Disciplina não encontrada."});
+       return res.status(404).json({error:"Disciplina não encontrada."});
     }
 
     const vinculoAluno = await AlunoDisciplina.findOne({where: {disciplinaId:disciplina.id}});
@@ -61,7 +61,7 @@ export const deletarDisciplina = async(req: Request, res: Response) : Promise<Re
     }
 
     await disciplina.destroy();
-    return res.json("Disciplina cadastrada com sucesso.");
+    return res.json("Disciplina deletada com sucesso.");
 };
 
 export const buscarDisciplinaPorId = async(req:Request, res: Response) : Promise<Response> =>{

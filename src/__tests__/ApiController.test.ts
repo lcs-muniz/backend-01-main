@@ -17,9 +17,9 @@ describe("Teste para verificar listagem de alunos", () => {
 describe("Teste para o cadastro do aluno", () => {
     it("Esse teste precisa fazer um cadastro de um novo aluno(objeto aluno deve ser criado nesse teste), deve verificar o status da response , a mensagem do response e se no body contém o novo aluno", async() => {
         const novoAluno = {
-            nome: "texds",
-            email: "texds@teste",
-            matricula: "10505"
+            nome: "teste015",
+            email: "teste015@teste",
+            matricula: "000015"
         };
 
         const response = await request(server)
@@ -39,10 +39,10 @@ describe("Teste para o cadastro do aluno", () => {
 
 describe("Teste de API de Alunos - Atualizar", () => {
     it("Deve atualizar um aluno na rota /atualizarAluno/:alunoId", async () => {
-        const alunoId = 16;
+        const alunoId = 19;
         const dadosAtualizados = {
-            nome: "test Atualizado",
-            email: "xd@example",
+            nome: "tessst Atualizado",
+            email: "xd@xexample",
         };
         
         const response = await request(server).put (`/atualizarAluno/${alunoId}`).send(dadosAtualizados);
@@ -57,7 +57,7 @@ describe("Teste de API de Alunos - Atualizar", () => {
 
 describe("Testes da API de Alunos - Deletar", () => {
     it("Deve excluir um aluno na rota /deletarAluno/:alunoId", async () => {
-        const alunoId = 2;
+        const alunoId = 19;
 
         const response = await request(server).delete(`/deletarAluno/${alunoId}`);
 
@@ -68,7 +68,7 @@ describe("Testes da API de Alunos - Deletar", () => {
 
 describe("Testes da API de Alunos - Deletar aluno vinculado a disciplina", () => {
     it("Não deve excluir um aluno vinculado a uma disciplina", async() => {
-        const alunoId = 3;
+        const alunoId = 1;
 
         const response = await request(server).delete(`/deletarAluno/${alunoId}`);
 
@@ -127,5 +127,45 @@ describe("Teste para o cadastro da disciplina", () => {
         expect(response.body).toHaveProperty("novaDisciplina");
         expect(response.body.novaDisciplina).toHaveProperty("id");
         expect(response.body.novaDisciplina).toHaveProperty("nome", novaDisciplina.nome);
+    });
+});
+
+describe("Testes da API de Disciplinas - Atualizar", () => {
+    it("Deve atualizar uma disciplina na rota /atualizarDisciplina/:disciplinaId", async () => {
+        const disciplinaId = 2;
+        const dadosAtualizados = {
+            nome: "Disciplina Atualizada",
+        };
+        
+        const response = await request(server)
+            .put(`/atualizarDisciplina/${disciplinaId}`)
+            .send(dadosAtualizados);
+
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe("Disciplina atualizado com sucesso.");
+        expect(response.body.disciplina).toHaveProperty("nome", dadosAtualizados.nome);
+    });
+});
+
+describe("Testes da API de Disciplinas - Deletar", () => {
+    it("Deve excluir uma disciplina na rota /deletarDisciplina/:disciplinaId", async () => {
+        const disciplinaId = 2;
+
+        const response = await request(server)
+            .delete(`/deletarDisciplina/${disciplinaId}`);
+
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe("Disciplina deletada com sucesso.");
+    });
+});
+
+describe("Testes Da API de Disciplinas - buscar por ID", () => {
+    it("Deve buscar uma disciplina na rota /buscarDisciplinaPorId/:disciplinaId", async () => {
+        const disciplinaId = 1;
+
+        const response = await request(server).get(`/buscarDisciplinaPorId/${disciplinaId}`);
+
+        expect(response.status).toBe(200);
+        expect(response.body.disciplina).toHaveProperty("id", disciplinaId);
     });
 });
